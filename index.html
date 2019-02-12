@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<title></title>
+
+</head>
+
+<body>
+
+	<div id="root">
+		<input type="text" id="input" v-model="message">
+
+		<p>The value of the input is: {{ message }}</p>
+	</div>
+	
+
+	<script src="https://unpkg.com/vue"></script>
+	<script>
+		
+		let data = {
+			
+		};
+
+
+		//create a new vue that only looks at the root div
+		new Vue({
+			el: '#root',
+			data: {
+				message: 'This is a message'
+			}
+		})
+
+	</script>
+
+</body>
+
+</html>
