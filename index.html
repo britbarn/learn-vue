@@ -18,36 +18,31 @@
 		</ul>
 
 
-		<input id="input" type="text">
-		<button id="button">Add Name</button>
+		<input id="input" type="text" v-model="newName">
+		<button v-on:click="addName">Add Name</button>
 
 	</div>
 	
 
 	<script src="https://unpkg.com/vue"></script>
 	<script>
-		
-		let data = {
-			
-		};
-
 
 		//create a new vue that only looks at the root div
 		var app = new Vue({
 			el: '#root',
 			data: {
+				newName: '',
 				names: ['Joe', 'Mary', 'Jane', 'Jack']
 			},
 
-			mounted() {
-				document.querySelector('#button').addEventListener('click', () => {
-				let name = document.querySelector('#input');
+			methods: {
+				addName() {
+					this.names.push(this.newName);
 
-				app.names.push(name.value);
-
-				name.value = '';
-				})
+					this.newName = '';
+				}
 			}
+
 		});
 
 		
