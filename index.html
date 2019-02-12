@@ -15,8 +15,15 @@
 <body>
 
 	<div id="root">
-		<button :class="{ 'is-loading': isLoading }" @click="toggleClass">Click Me</button>
-		<!-- <h1 :class="className">Hello World</h1> -->
+		<h2>all tasks</h2>
+		<ul>
+			<li v-for="task in tasks" v-text="task.description"></li>
+		</ul>
+
+		<h2>incomplete tasks</h2>
+		<ul>
+			<li v-for="task in incompleteTasks" v-text="task.description"></li>
+		</ul>
 
 	</div>
 	
@@ -28,14 +35,24 @@
 		var app = new Vue({
 			el: '#root',
 			data: {
-				isLoading = false;
+				tasks: [
+
+					{ description: 'Go to store', completed: true },
+					{ description: 'Go to work', completed: true },
+					{ description: 'Go to pharmacy', completed: false },
+					{ description: 'Go to bed', completed: false },
+
+				]
 			},
 
-			methods: {
-				toggleClass() {
-					this.isLoading = true;
+			computed: {
+				incompleteTasks() {
+					return this.tasks.filter(task => ! task.completed);
+
+
 				}
 			}
+
 
 		});
 
