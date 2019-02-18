@@ -1,35 +1,36 @@
-Vue.component('message', {
-	props: ['title', 'body'],
+//showmodal is not available to use in thie component because it has it's own scope
 
-	data() {
-		return {
-			isVisible: true
-		}
-	},
+Vue.component('modal', {
 	template: 
 	`
-		<article class="message" v-show="isVisible">
-			<div class="message-header">
-				{{ title }}
-
-				<button type="button" @click="hideModal">x</button>
-			</div>
-
-			<div class="message-body">
-				{{ body }}
-			</div>
-		</article>
+		<div class="modal is-active">
+  			<div class="modal-background"></div>
+  			<div class="modal-content">
+  				<div class="box">
+  					<p>
+  						<slot></slot>
+  					</p>
+  				</div>
+  				
+  			</div>
+  
+  			<button class="modal-close" @click="$emit('close')"></button>
+		</div>
 	`,
 
-	methods: {
-		hideModal() {
-			this.isVisible = false;
-		}
-	}
+	// methods: {
+	// 	hideModal() {
+	// 		this.isVisible = false;
+	// 	}
+	// }
 });
 
 
 
 new Vue({
-	el: '#root'
+	el: '#root',
+
+	data: {
+		showModal: false
+	}
 });

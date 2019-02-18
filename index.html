@@ -18,7 +18,10 @@
 <body>
 
 	<div id="root" class="container">
-		<message title="hello world" body="lorem ipsum"></message>
+		<modal v-if="showModal" @close="showModal = false">
+			<p>Insert any text here</p>
+		</modal>
+		<button @click="showModal = true">Show Modal</button>
 	</div>
 	
 
